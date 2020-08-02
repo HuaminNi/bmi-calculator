@@ -16,7 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var heightLabel: UILabel!
     
-    var bmiValue : String?
+//    var bmiValue : String?
+    var calculateBrain = CalculateBrain()
     
     
     @IBAction func heightSliderChange(_ sender: UISlider) {
@@ -36,8 +37,10 @@ class ViewController: UIViewController {
     @IBAction func calculateButtonPressed(_ sender: UIButton) {
         let weight = weightBar.value
         let height = heightBar.value
-        let bmi = weight / pow(height, 2)
-        bmiValue = String(format: "%0.1f", bmi)
+
+        calculateBrain.calculateBMI(weight:weight, height:height)
+        
+        
  //这是在用编程实现链接两个file的情况下：
 //        let secondVC = SecondViewController()
 //        secondVC.bmivalue = String(format: "%0.1f", bmi)
@@ -50,7 +53,8 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "toGoResult" {
             let destinationVC = segue.destination as! ResultViewController  //使用as完成了downcasting，因为这个prepare function是被override的，一开始它被设立的时候是不知道哪个controller的，需要我们告诉它
-            destinationVC.bmiValue = bmiValue
+//            destinationVC.bmiValue = bmiValue
+            destinationVC.bmiValue = calculateBrain.getBMI()
         }
     }
     
