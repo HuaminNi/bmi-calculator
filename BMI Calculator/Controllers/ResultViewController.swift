@@ -10,12 +10,16 @@ import UIKit
 
 class ResultViewController:UIViewController {
     var bmiValue : String? //因为最初是没有计算bmivalue的
+    var color : UIColor?
+    var advice : String?
     @IBOutlet weak var suggestionLabel: UILabel!
     @IBOutlet weak var bmiLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         bmiLabel.text = bmiValue
+        suggestionLabel.text = advice
+        view.backgroundColor = color
     }
     
     @IBAction func recalculatePressed(_ sender: UIButton) {

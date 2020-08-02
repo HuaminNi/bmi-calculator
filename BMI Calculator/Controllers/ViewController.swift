@@ -55,6 +55,8 @@ class ViewController: UIViewController {
             let destinationVC = segue.destination as! ResultViewController  //使用as完成了downcasting，因为这个prepare function是被override的，一开始它被设立的时候是不知道哪个controller的，需要我们告诉它
 //            destinationVC.bmiValue = bmiValue
             destinationVC.bmiValue = calculateBrain.getBMI()
+            destinationVC.advice = calculateBrain.getAdvice()
+            destinationVC.color = calculateBrain.getColor()
         }
     }
     
